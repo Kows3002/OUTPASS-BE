@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+require('dotenv').config(); 
 
 const app = express();
 const PORT = 5002;
@@ -11,9 +12,12 @@ const PORT = 5002;
 app.use(express.json());
 app.use(cors());
 
+console.log(process.env.MONGO_URI);
+console.log(process.env.JK)
+
 // ✅ Connect to MongoDB
 mongoose
-  .connect("mongodb+srv://kowsalya:admin@cluster0.jygw7.mongodb.net/outpassDB?retryWrites=true&w=majority", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -70,7 +74,7 @@ app.post("/api/auth/login", async (req, res) => {
     }
 
     // ✅ Generate JWT Token
-    const token = jwt.sign({ userId: user._id, name: user.name, role: user.role }, "Kows-secret", { expiresIn: "1h" });
+    const token = jwt.sign({ userId: user._id, name: user.name, role: user.role }, process.env.Token, { expiresIn: "1h" });
 
     res.json({ 
       message: "✅ Login successful!", 
