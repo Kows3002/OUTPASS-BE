@@ -1,0 +1,77 @@
+POST http://localhost:5002/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "kows",
+  "password": "student123",
+  "role": "student"
+}
+###
+POST http://localhost:5002/api/auth/login
+Content-Type: application/json
+
+{
+  "name": "kows",
+  "password": "student123"
+}
+###
+POST http://localhost:5002/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "kd",
+  "password": "kd123",
+  "role": "student"
+}
+###
+POST http://localhost:5002/api/auth/login
+Content-Type: application/json
+
+{
+  "name": "kd",
+  "password": "kd123"
+}
+### 
+POST http://localhost:5002/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "kowss",
+  "password": "kowss",
+  "role": "student"
+}
+###
+POST http://localhost:5002/api/auth/login
+Content-Type: application/json
+
+{
+  "name": "kowss",
+  "password": "kowss"
+}
+###
+POST http://localhost:5002/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "bunto",
+  "password": "bunto",
+  "role": "hod"
+}
+###
+### Get Outpass History student
+GET http://localhost:5002/api/outpass/history?role=student&name=kowss
+
+### Get Outpass History staff
+GET http://localhost:5002/api/outpass/history?role=staff
+###
+POST http://localhost:5002/api/outpass/generate-pdf
+Content-Type: application/json
+
+{
+  "studentName": "John Doe",
+  "reason": "Family Emergency",
+  "dateOfLeave": "2025-04-01",
+  "dateOfReturn": "2025-04-03",
+  "status": "Approved",
+  "studentEmail": "johndoe@example.com"
+}
